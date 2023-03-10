@@ -93,19 +93,19 @@ def draw_graph(log):
     return plt
 
 
-def run(GENERATIONS, POPULATION, MUTATION_PROB,
-         TOURNAMENT_SIZE, CROSS_PROB, IND_PROB, POLYGONS, SEED):
-    random.seed(SEED)
+def run(generations, population, MUTATION_PROB,
+         tournament_size, CROSS_PROB, IND_PROB, polygons, seed):
+    random.seed(seed)
 
 
-    toolbox.register("individual", tools.initRepeat, creator.Individual, make_polygon, n=POLYGONS)
+    toolbox.register("individual", tools.initRepeat, creator.Individual, make_polygon, n=polygons)
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)
     toolbox.register("evaluate", evaluate)
     toolbox.register("mate", tools.cxTwoPoint)
     toolbox.register("mutate", mutate, indpb=IND_PROB)
-    toolbox.register("select", tools.selTournament, tournsize=TOURNAMENT_SIZE)
+    toolbox.register("select", tools.selTournament, tournsize=tournament_size)
 
-    population = toolbox.population(n=POPULATION)
+    population = toolbox.population(n=population)
     hof = tools.HallOfFame(4)
     stats = tools.Statistics(lambda x: x.fitness.values[0])
     stats.register("min", numpy.min)
@@ -113,7 +113,7 @@ def run(GENERATIONS, POPULATION, MUTATION_PROB,
     stats.register("median", numpy.median)
     stats.register("std", numpy.std)
     population, log = algorithms.eaSimple(population, toolbox,
-                        cxpb=CROSS_PROB, mutpb=MUTATION_PROB, ngen=GENERATIONS, 
+                        cxpb=CROSS_PROB, mutpb=MUTATION_PROB, ngen=generations,
                         stats=stats, halloffame=hof, verbose=True)
 
     image = draw(population[0])
