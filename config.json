@@ -1,0 +1,16 @@
+{
+    "0": {
+        "GENERATIONS": 4000,
+        "POPULATION": 30,
+        "IND_PROB": 0.5,
+        "MUTATION_PROB": 0.7,
+        "CROSS_PROB": 0.2,
+        "SEED": 53,
+        "POLYGONS": 10,
+        "TOURNAMENT_SIZE": 3
+    },
+
+    "Image": {
+        "TARGET_IMAGE": "media/target-image-1.png"
+    }
+}
