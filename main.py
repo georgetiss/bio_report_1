@@ -82,8 +82,6 @@ def evaluate(solution):
 def draw_graph(log):
     fig, ax1 = plt.subplots()
     ax1.plot(log.select("gen"), log.select("median"), color='red', label="Median Fitness")
-    ax2 = ax1.twinx()
-    ax2.plot(log.select("gen"), log.select("std"), color='blue', label="Standard Deviation")
     fig.tight_layout()
 
     ax1.set_xlabel("Generation")
@@ -91,9 +89,6 @@ def draw_graph(log):
     for num in ax1.get_yticklabels():
         num.set_color("red")
 
-    ax2.set_ylabel("Standard Deviation", color='blue')
-    for num in ax2.get_yticklabels():
-        num.set_color("blue")
 
     return plt
 
